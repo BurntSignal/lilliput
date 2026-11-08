@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#172620">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Lilliput">
+  <meta name="description" content="A little town that lives while you're away.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="stylesheet" href="/app.css">
+  <title>Lilliput · A Living Town</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">✦</div>
+        <div><div class="eyebrow">THE LITTLE WORLD</div><h1>Lilliput</h1></div>
+      </div>
+      <div class="now-card" aria-live="off"><div class="online"><i class="dot"></i><span id="connection">Connecting</span></div><div class="clock" id="clock">--:--</div><div class="date" id="date">—</div></div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <span class="kicker">A town with a life of its own</span>
+        <h2>Small lives. <em>Big stories.</em></h2>
+        <p>Twenty-five Lilliputians, each with a home, a purpose, and a day unfolding in real time.</p>
+      </section>
+      <div class="notice hidden" id="notice" role="status"></div>
+
+      <div class="metrics" id="metrics" aria-label="Town statistics">
+        <div class="metric"><span>Population</span><strong id="stat-pop">25</strong><small>Residents</small></div>
+        <div class="metric"><span>Food stores</span><strong id="stat-food">—</strong><small>Village supply</small></div>
+        <div class="metric"><span>Harmony</span><strong id="stat-harmony">—</strong><small>Community spirit</small></div>
+        <div class="metric"><span>Prosperity</span><strong id="stat-prosperity">—</strong><small>Local economy</small></div>
+      </div>
+
+      <nav class="tabs" aria-label="Main navigation">
+        <button type="button" class="tab active" data-tab="town" aria-current="page"><span class="tab-icon">⌂</span> Town</button>
+        <button type="button" class="tab" data-tab="people"><span class="tab-icon">♙</span> People <span class="tab-count">25</span></button>
+        <button type="button" class="tab" data-tab="chronicle"><span class="tab-icon">≡</span> Chronicle</button>
+      </nav>
+
+      <section id="view-town" class="view">
+        <div class="section-header"><div><div class="eyebrow">LIVE OBSERVATION</div><h3>Places & whereabouts</h3></div><span class="header-note">Tap any place</span></div>
+        <div class="town-grid" id="town-grid"></div>
+        <div class="legend">Residents change locations as their real-time routines unfold. Places with nobody present remain part of the town.</div>
+      </section>
+
+      <section id="view-people" class="view hidden">
+        <div class="section-header"><div><div class="eyebrow">THE LILLIPUTIANS</div><h3>Resident registry</h3></div><span class="header-note" id="people-count">25 residents</span></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input type="search" id="search" placeholder="Search names, jobs, traits..." autocomplete="off" aria-label="Search residents"></label>
+        <div class="people-grid" id="people-grid"></div>
+      </section>
+
+      <section id="view-chronicle" class="view hidden">
+        <div class="section-header"><div><div class="eyebrow">WHAT YOU MISSED</div><h3>The town chronicle</h3></div><span class="header-note">Live entries</span></div>
+        <div id="chronicle" class="timeline"></div>
+      </section>
+    </main>
+    <footer><span>✦</span> Lilliput exists even when nobody is watching. <span class="footer-version">v0.1</span></footer>
+  </div>
+
+  <div class="overlay hidden" id="overlay" role="presentation">
+    <div class="overlay-shade" id="overlay-shade"></div>
+    <section class="drawer" role="dialog" aria-modal="true" aria-label="Details" tabindex="-1">
+      <div class="drawer-top"><span id="drawer-category">RESIDENT DOSSIER</span><button type="button" class="close" id="drawer-close" aria-label="Close details">✕</button></div>
+      <div id="drawer-body"></div>
+    </section>
+  </div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
